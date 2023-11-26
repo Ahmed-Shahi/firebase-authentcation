@@ -1,4 +1,3 @@
-const signup = document.querySelector('#signin')
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
 import { getAuth,signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
 
@@ -18,6 +17,7 @@ import { getAuth,signInWithEmailAndPassword  } from "https://www.gstatic.com/fir
   const email = document.getElementById('email') 
   const password = document.getElementById('password')
 
+const signin = document.querySelector('#signin')
 
 signin.addEventListener('click',(e)=>{
     
@@ -25,7 +25,7 @@ signin.addEventListener('click',(e)=>{
 signInWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
     const user = userCredential.user;
-    window.location = 'home.html'
+    location.href = './home.html'
   })
   .catch((error) => {
     const errorCode = error.code;
