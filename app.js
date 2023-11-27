@@ -29,7 +29,7 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(error)
+      console.log('Incorrect Password/Email')
     });
   })
   
