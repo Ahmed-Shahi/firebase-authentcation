@@ -1,32 +1,40 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyA-6jKJat2MZMEPzkQfNOxW4hsf3dQ5ESY",
-    authDomain: "authentication-app-56e22.firebaseapp.com",
-    projectId: "authentication-app-56e22",
-    storageBucket: "authentication-app-56e22.appspot.com",
-    messagingSenderId: "215289143898",
-    appId: "1:215289143898:web:8d3b976c023951bd2e2e63"
-  };
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA-6jKJat2MZMEPzkQfNOxW4hsf3dQ5ESY",
+  authDomain: "authentication-app-56e22.firebaseapp.com",
+  projectId: "authentication-app-56e22",
+  storageBucket: "authentication-app-56e22.appspot.com",
+  messagingSenderId: "215289143898",
+  appId: "1:215289143898:web:8d3b976c023951bd2e2e63"
+};
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app)
+  const db = getFirestore(app);
 
   
   let signup = document.querySelector('#signup')
 
   signup.addEventListener('click',()=>{
-    const email = document.getElementById('email') 
-    const password = document.getElementById('password')
+    const getemail = document.querySelector('#email') 
+    const getpassword = document.querySelector('#password')
   
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
+    createUserWithEmailAndPassword(auth, getemail.value, getpassword.value)
+       .then(async (userCredential) => {
         const user = userCredential.user;
         console.log(user.email)
+        alert('Account Created')
+        await setDoc(doc(db, "users", user.uid), {
+          email: getemail.value,
+          password: getpassword.value,
+        });
         location.href = './signin.html'
+              
     })
       .catch((error) => {
         const errorCode = error.code;

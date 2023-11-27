@@ -1,7 +1,6 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
-
   const firebaseConfig = {
     apiKey: "AIzaSyA-6jKJat2MZMEPzkQfNOxW4hsf3dQ5ESY",
     authDomain: "authentication-app-56e22.firebaseapp.com",
@@ -14,6 +13,7 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app)
 
+
   let signin = document.querySelector('#signin')
 
   signin.addEventListener("click",()=>{
@@ -24,8 +24,7 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
     signInWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      alert('hi')
-
+      location.href = './todo.html'
     })
     .catch((error) => {
       const errorCode = error.code;
