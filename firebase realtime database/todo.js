@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-import { getDatabase,ref, set,onValue} from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
-import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, updateDoc, deleteField } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
+import { getDatabase,ref, set} from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-6jKJat2MZMEPzkQfNOxW4hsf3dQ5ESY",
